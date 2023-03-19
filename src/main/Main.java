@@ -3,6 +3,9 @@ package main;
 import javax.swing.*;
 
 public class Main {
-    JFrame aken = new JFrame();
+    public static void main(String[] args) {
+        JFrame aken = new JFrame();
+        aken.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
 }
