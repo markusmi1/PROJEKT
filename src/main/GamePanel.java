@@ -17,8 +17,4 @@ public class GamePanel extends JPanel {
         this.setBackground(Color.BLACK);
         //this.setDoubleBuffered(true);
     }
-
-
-
-
 }

@@ -13,8 +13,6 @@ public class Main {
         GamePanel level = new GamePanel(); //uus mängu paneel
         aken.add(level);  //lisab mängu paneeli aknasse
         aken.pack();
-
         aken.setVisible(true);
     }
-
 }
