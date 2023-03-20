@@ -6,7 +6,7 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable{
 
 
-    int blokiSuurus = 16;
+    public int blokiSuurus = 16;
     int kordaja = 3;
     final int lõplikSuurus = blokiSuurus * kordaja;
     int ekraaniKõrgus = lõplikSuurus * 10;
