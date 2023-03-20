@@ -14,5 +14,8 @@ public class Main {
         aken.add(level);  //lisab mängu paneeli aknasse
         aken.pack();
         aken.setVisible(true);
+
+        level.alustaGameThread();
+
     }
 }
