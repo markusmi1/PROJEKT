@@ -6,15 +6,13 @@ public class Main {
     public static void main(String[] args) {
         JFrame aken = new JFrame();
         aken.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        aken.setResizable(false);
-        aken.setTitle("2D mäng");
-
-        GamePanel gamePanel = new GamePanel();
-        aken.add(gamePanel);
-        aken.pack();
-
         aken.setLocationRelativeTo(null);
+        aken.setResizable(false);
+        aken.setTitle("Totally not pokemon simulator");
+
+        GamePanel level = new GamePanel(); //uus mängu paneel
+        aken.add(level);  //lisab mängu paneeli aknasse
+        aken.pack();
         aken.setVisible(true);
     }
-
 }

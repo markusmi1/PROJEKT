@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    int orgiginaalRuuduSuurus = 16;
-    int suhe = 3;
-    int ruuduSuurus = orgiginaalRuuduSuurus * suhe;
-    int maxLaiusRuute = 12;
-    int maxKõrgusRuute = 8;
-    int aknaLaius = maxLaiusRuute * ruuduSuurus;
-    int aknaKõrgus = maxKõrgusRuute * ruuduSuurus;
+
+
+    int blokiSuurus = 16;
+    int kordaja = 3;
+    final int lõplikSuurus = blokiSuurus * kordaja;
+    int ekraaniKõrgus = lõplikSuurus * 10;
+    int ekraaniLaius = lõplikSuurus * 15;
 
     public GamePanel(){
-        this.setPreferredSize(new Dimension( aknaLaius, aknaKõrgus));
-        this.setBackground(Color.green);
-        this.setDoubleBuffered(true);
+        this.setPreferredSize(new Dimension(ekraaniLaius,ekraaniKõrgus));
+        this.setBackground(Color.BLACK);
+        //this.setDoubleBuffered(true);
     }
 }
