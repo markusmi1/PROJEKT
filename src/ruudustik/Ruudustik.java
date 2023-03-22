@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Ruudustik {
-    GamePanel gp;
+    GamePanel gp;     //COMMENT: Ma lisasin andmed faili seal on kõik peamised andmed sees, nüüd vist pole enam gp vaja -Robin
     Ruut[] ruut;
 
     public Ruudustik(GamePanel gp){
@@ -44,11 +44,11 @@ public class Ruudustik {
                 String[] tükid = rida.split(" ");
                 for(String el : tükid){
                     int pildiNr = Integer.parseInt(el);
-                    graafika2D.drawImage(ruut[pildiNr].pilt, x, y, gp.lõplikSuurus, gp.lõplikSuurus, null);
-                    x+=gp.lõplikSuurus;
+                    graafika2D.drawImage(ruut[pildiNr].pilt, x, y, gp.suurus, gp.suurus, null);
+                    x+=gp.suurus;
                 }
                 x = 0;
-                y += gp.lõplikSuurus;
+                y += gp.suurus;
             }
         } catch (FileNotFoundException e){
             e.printStackTrace();
