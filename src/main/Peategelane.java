@@ -1,7 +1,10 @@
 package main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Objects;
 
 public class Peategelane implements Andmed {
 
@@ -9,9 +12,9 @@ public class Peategelane implements Andmed {
     String pildiTee;
 
 
-    public Peategelane(String pildiTee) {
+    public Peategelane(String pildiTee) throws IOException {
         this.pildiTee = pildiTee;      //täielik tee peab olema igaks juhuks hetkel, otse kasutast otsimisel ei leidnud algul
-        this.tegelasePilt = new ImageIcon(pildiTee).getImage();     //annab karkaterile pildi, alamklassiks on ImageIcon, vajadusel saab moondada
+        this.tegelasePilt = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(pildiTee)));     //annab karkaterile pildi, alamklassiks on ImageIcon, vajadusel saab moondada
     }
 
 
@@ -21,7 +24,7 @@ public class Peategelane implements Andmed {
 
     public void prindiKarakter(Graphics2D graafika, int xKoord,int yKoord){
 
-        graafika.drawImage(this.tegelasePilt,xKoord,yKoord,40,40,null);
+        graafika.drawImage(tegelasePilt,xKoord,yKoord,48,48,null);
     }
 
     public void setPeategelanePilt(String failpath){

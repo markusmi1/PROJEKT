@@ -4,6 +4,7 @@ import ruudustik.Ruudustik;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -16,10 +17,10 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     Thread gameThread;
-    Ruudustik ruudustik = new Ruudustik(this);
-    Peategelane mehike = new Peategelane("C:\\Users\\murkr\\Desktop\\Tartu Ülikool\\java OOP\\OOP\\PROJEKT\\pildid\\tegeleased\\tegelane.png");
+    Ruudustik ruudustik = new Ruudustik(this);//"C:\\Users\\murkr\\Desktop\\Tartu Ülikool\\java OOP\\OOP\\PROJEKT\\pildid\\tegeleased\\tegelane.png"
+    Peategelane mehike = new Peategelane("/tegelased/tegelane.png");
 
-    public GamePanel(){             //paneeli andmed
+    public GamePanel() throws IOException {             //paneeli andmed
         this.setPreferredSize(new Dimension(Andmed.ekraaniLaius,Andmed.ekraaniKõrgus));
         this.setBackground(Color.BLACK);
         this.setLayout(null);
