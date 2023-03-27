@@ -9,6 +9,7 @@ import java.io.IOException;
 public class GamePanel extends JPanel implements Runnable{
 
 
+
     int blokiSuurus = 16;
     int kordaja = 3;
     public final int suurus = blokiSuurus * kordaja;   //ekrranil oleva bloki lõplik suurus
@@ -17,7 +18,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     Thread gameThread;
-    Ruudustik ruudustik = new Ruudustik(this);//"C:\\Users\\murkr\\Desktop\\Tartu Ülikool\\java OOP\\OOP\\PROJEKT\\pildid\\tegeleased\\tegelane.png"
+    Ruudustik ruudustik = new Ruudustik();//"C:\\Users\\murkr\\Desktop\\Tartu Ülikool\\java OOP\\OOP\\PROJEKT\\pildid\\tegeleased\\tegelane.png"
     Peategelane mehike = new Peategelane("/tegelased/tegelane.png");
 
     public GamePanel() throws IOException {             //paneeli andmed
@@ -60,8 +61,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void paint(Graphics g){    //printimine run käigu ajal(sisse ehitatud funktsioon, kutsutakse vaikselt)
 
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
-        ruudustik.maastik(graafika2D);
-
+        //ruudustik.maastik(graafika2D);
+        ruudustik.mänguFaas(graafika2D);
         //TODO vaja viia kas run meetodisse või siia lisada signatuurile muutuvad koordinaadi parameetrid
         mehike.prindiKarakter(graafika2D,100,100); //prindib mehikese
         graafika2D.dispose();
