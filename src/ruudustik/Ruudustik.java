@@ -1,5 +1,6 @@
 package ruudustik;
 
+import main.Andmed;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Ruudustik {
+public class Ruudustik implements Andmed {
     GamePanel gp;     //COMMENT: Ma lisasin andmed faili seal on kõik peamised andmed sees, nüüd vist pole enam gp vaja -Robin
     Ruut[] ruut;
 
@@ -44,11 +45,11 @@ public class Ruudustik {
                 String[] tükid = rida.split(" ");
                 for(String el : tükid){
                     int pildiNr = Integer.parseInt(el);
-                    graafika2D.drawImage(ruut[pildiNr].pilt, x, y, gp.suurus, gp.suurus, null);
-                    x+=gp.suurus;
+                    graafika2D.drawImage(ruut[pildiNr].pilt, x, y, suurus, suurus, null);
+                    x+=suurus;
                 }
                 x = 0;
-                y += gp.suurus;
+                y += suurus;
             }
         } catch (FileNotFoundException e){
             e.printStackTrace();
