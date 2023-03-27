@@ -17,7 +17,8 @@ public class KlaviatuurSisend implements KeyListener {
         if (kood == KeyEvent.VK_S) alla = true;
         if (kood == KeyEvent.VK_A) vasak = true;
         if (kood == KeyEvent.VK_D) parem = true;
-        System.out.println("nuppu vajutati");
+        System.out.println("nuppu vajutati");   //kontroll
+        //System.out.println(Thread.currentThread().getName());
     }
 
     @Override
