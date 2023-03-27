@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Peategelane implements Andmed {
-
+    //TODO lisa sisse kõik pildid karakteri suunast, muuda konstruktoris nii et esimene pilt on alati eestvaade
     Image tegelasePilt;
     String pildiTee;
 

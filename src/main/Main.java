@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class Main {
@@ -13,6 +14,7 @@ public class Main {
 
         GamePanel level = new GamePanel(); //uus mängu paneel
         aken.add(level);  //lisab mängu paneeli aknasse
+        //aken.add(
         aken.pack();
         aken.setVisible(true);
 

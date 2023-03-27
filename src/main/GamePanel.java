@@ -16,8 +16,8 @@ public class GamePanel extends JPanel implements Runnable{
     int yKoord = 100;
     Thread gameThread;
     KlaviatuurSisend klaviatuurSisend = new KlaviatuurSisend();
-    Ruudustik ruudustik = new Ruudustik(this);
-    Peategelane mehike = new Peategelane("pildid/tegeleased/tegelane.png");
+    Ruudustik ruudustik = new Ruudustik();
+    Peategelane mehike = new Peategelane("/tegelased/tegelane.png");
 
     public GamePanel() throws IOException {             //paneeli andmed
         this.setPreferredSize(new Dimension(Andmed.ekraaniLaius,Andmed.ekraaniKõrgus));
@@ -33,7 +33,12 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
     }
 
-    public void uuendaPositsiooni(){
+    public void lõpetaGameThread(){
+        gameThread.interrupt();
+    }
+
+    public void uuendaPositsiooni(){         //uuendab karakteri positisooni levelil, muudab pilti
+        //TODO vaja lisad suuna pildid ja viia muutused siia
         if (KlaviatuurSisend.üles) yKoord -= 3;
         else if (KlaviatuurSisend.alla) yKoord += 3;
         else if (KlaviatuurSisend.vasak) xKoord -= 3;
@@ -44,10 +49,26 @@ public class GamePanel extends JPanel implements Runnable{
     public void run() {         //PEAMINE MÄNGU TSÜKKEL
         //TODO vaja lisada peamine tsükkel + teha meetod mis konstantselt uuendaks graafikat
         //TODO hetkel on graafika viidud Peategelase klassi ehk äkki siin sõltuvalt keylistnerist muuta karakteri suuna pilt
+
+        double aja_vahemik = 1000000000/60;
+        double UusAegEnneJoonistamist = System.nanoTime() + aja_vahemik;
+
         while (gameThread != null){
             //System.out.println("käib");
+
             uuendaPositsiooni();
             repaint();
+
+            //System.out.println(Thread.currentThread().getName());
+            try {
+                double allesjäänudAeg = (UusAegEnneJoonistamist - System.nanoTime())/1000000;
+                if (allesjäänudAeg < 0) allesjäänudAeg = 0;
+                Thread.sleep((long)allesjäänudAeg);
+
+                UusAegEnneJoonistamist += aja_vahemik;
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
