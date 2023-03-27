@@ -10,7 +10,7 @@ public interface Andmed {
     int xKoord = 100;
     int yKoord = 100;
 
-    int staatus = 0;
+    int staatus = 1;
     int algStaatus = 0;
     int peaMäng = 1;
 

@@ -1,7 +1,6 @@
 package ruudustik;
 
 import main.Andmed;
-import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
