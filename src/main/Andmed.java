@@ -6,5 +6,8 @@ public interface Andmed {
     int suurus = blokiSuurus * kordaja;   //ekrranil oleva bloki lõplik suurus
     int ekraaniKõrgus = suurus * 10;
     int ekraaniLaius = suurus * 15;
+    // karakteri alguspunkt
+    int xKoord = 100;
+    int yKoord = 100;
 
 }
