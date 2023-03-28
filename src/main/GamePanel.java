@@ -10,9 +10,6 @@ import java.io.IOException;
 public class GamePanel extends JPanel implements Runnable,Andmed{
 
 
-
-    // karakteri alguspunkt
-
     int FPS;
     Thread PeamiseMänguLõim;
     boolean kasTöötab;
@@ -39,10 +36,12 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         this.setDoubleBuffered(true);
     } //konstruktor
 
+
     public void alusta(){        //alustab lõime,määrab lõimele kus tegutseda, alustab meetodi run
         PeamiseMänguLõim = new Thread(this);
         kasTöötab = true;
         PeamiseMänguLõim.start();
+
     }
 
     public void lõpetaGameThread(){
@@ -108,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         return a.intersects(b);
     }
 
+
     public void paint(Graphics g){    //printimine run käigu ajal(sisse ehitatud funktsioon, kutsutakse vaikselt)
 
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
@@ -119,6 +119,7 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         kirst.hitBox.joonistaKast(graafika2D);
         //proov1.joonistaKast(graafika2D);  //ajutine
         //proov2.joonistaKast(graafika2D);
+
         graafika2D.dispose();
 
 
