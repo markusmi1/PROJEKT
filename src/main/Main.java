@@ -17,8 +17,6 @@ public class Main {
         //aken.add(
         aken.pack();
         aken.setVisible(true);
-
-        level.alustaGameThread();
-
+        level.alusta();
     }
 }
