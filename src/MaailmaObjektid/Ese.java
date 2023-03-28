@@ -15,4 +15,5 @@ public class Ese {
         this.väärtus = väärtus;
         this.kasTarvitatav = kasTarvitatav;
     }
+
 }

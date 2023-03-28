@@ -11,11 +11,18 @@ public class Peategelane implements Andmed {
     Image tegelasePilt;
     String pildiTee;
 
+    int x;
+    int y;
+    public KokkupõrkeKast hitBox;
 
-    public Peategelane(String pildiTee) throws IOException {
+
+    public Peategelane(String pildiTee,int xKoord, int yKoord) throws IOException {
         this.pildiTee = pildiTee;      //täielik tee peab olema igaks juhuks hetkel, otse kasutast otsimisel ei leidnud algul
         this.tegelasePilt = new ImageIcon(getClass().getResource(pildiTee)).getImage();
         //this.tegelasePilt = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(pildiTee)));     //annab karkaterile pildi, alamklassiks on ImageIcon, vajadusel saab moondada
+        this.x = xKoord;
+        this.y = yKoord;
+        this.hitBox = new KokkupõrkeKast(x+10,y+38,10,10,Color.WHITE);
     }
 
 

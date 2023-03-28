@@ -12,15 +12,16 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
 
 
     // karakteri alguspunkt
-    int xKoord = 0;
-    int yKoord = 0;
 
     int FPS;
     Thread PeamiseMänguLõim;
+    boolean kasTöötab;
     KlaviatuurSisend klaviatuurSisend;
     Ruudustik ruudustik;
     Peategelane mehike;
     AardeKirst kirst;
+    //KokkupõrkeKast proov1;    //ajutised
+    //KokkupõrkeKast proov2;
 
     public GamePanel() throws IOException { //paneeli andmed ja vajalike objektide tegemine
         this.FPS= 60;
@@ -29,15 +30,18 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         this.setLayout(null);
         this.ruudustik = new Ruudustik();
         this.klaviatuurSisend = new KlaviatuurSisend();
-        this.mehike = new Peategelane("/tegelased/tegelane.png");
+        this.mehike = new Peategelane("/tegelased/tegelane.png",100,100);
         this.kirst = new AardeKirst();
+        //this.proov1 = new KokkupõrkeKast(mehike.x+12,mehike.y+38,10,10,Color.WHITE);  //kokkupõrke proovimiseks, EI tööta
+        //this.proov2 = new KokkupõrkeKast(kirst.xKoord,kirst.yKoord,kirst.pildiSuurus,kirst.pildiSuurus,Color.BLUE);
         this.addKeyListener(klaviatuurSisend);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
-    }
+    } //konstruktor
 
-    public void alustaGameThread(){        //alustab lõime,määrab lõimele kus tegutseda, alustab meetodi run
+    public void alusta(){        //alustab lõime,määrab lõimele kus tegutseda, alustab meetodi run
         PeamiseMänguLõim = new Thread(this);
+        kasTöötab = true;
         PeamiseMänguLõim.start();
     }
 
@@ -47,10 +51,26 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
 
     public void uuendaPositsiooni(){         //uuendab karakteri positisooni levelil, muudab pilti
         //TODO vaja lisad suuna pildid ja viia muutused siia
-        if (KlaviatuurSisend.üles) yKoord -= 3;
-        else if (KlaviatuurSisend.alla) yKoord += 3;
-        else if (KlaviatuurSisend.vasak) xKoord -= 3;
-        else if (KlaviatuurSisend.parem) xKoord += 3;
+        if (KlaviatuurSisend.üles) {
+            mehike.y -= 3;
+            mehike.hitBox.y -= 3;
+            //proov1.y -= 3;
+        }
+        else if (KlaviatuurSisend.alla) {
+            mehike.y += 3;
+            mehike.hitBox.y += 3;
+            //proov1.y += 3;
+        }
+        else if (KlaviatuurSisend.vasak) {
+            mehike.x -= 3;
+            mehike.hitBox.x -= 3;
+            //proov1.x -= 3;
+        }
+        else if (KlaviatuurSisend.parem) {
+            mehike.x += 3;
+            mehike.hitBox.x += 3;
+            //proov1.x += 3;
+        }
     }
 
     @Override
@@ -60,9 +80,15 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         double aja_vahemik = 1000000000/FPS;
         double UusAegEnneJoonistamist = System.nanoTime() + aja_vahemik;
 
-        while (PeamiseMänguLõim != null){
-            //System.out.println("käib");
-
+        while (kasTöötab){
+            /**if (proov1.intersects(proov2)){
+                System.out.println("peategeleasel on kokkupuude kirstuga");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }*/
             uuendaPositsiooni();
             repaint();  //kutsub uuesti esile paint meetodi, uuendab graafikat
 
@@ -78,18 +104,24 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
             }
         }
     }
-
+    public boolean kokkupõrge(Rectangle a, Rectangle b){
+        return a.intersects(b);
+    }
 
     public void paint(Graphics g){    //printimine run käigu ajal(sisse ehitatud funktsioon, kutsutakse vaikselt)
 
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
 
         ruudustik.maastik(graafika2D);
-        //Shape ruut = new Rectangle(0,0,suurus,suurus);
-        mehike.prindiKarakter(graafika2D,xKoord,yKoord);//prindib mehikese
-        graafika2D.drawRect(xKoord,yKoord,suurus,suurus);
-        graafika2D.dispose();
         kirst.joonistaKirst(graafika2D);
+        mehike.prindiKarakter(graafika2D,mehike.x,mehike.y);//prindib mehikese
+        mehike.hitBox.joonistaKast(graafika2D);
+        kirst.hitBox.joonistaKast(graafika2D);
+        //proov1.joonistaKast(graafika2D);  //ajutine
+        //proov2.joonistaKast(graafika2D);
+        graafika2D.dispose();
+
+
 
     }
 
