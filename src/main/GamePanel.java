@@ -109,7 +109,6 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         return a.intersects(b);
     }
 
-
     public void paint(Graphics g){    //printimine run käigu ajal(sisse ehitatud funktsioon, kutsutakse vaikselt)
 
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
@@ -123,10 +122,5 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         //proov2.joonistaKast(graafika2D);
 
         graafika2D.dispose();
-
-
-
     }
-
-
 }

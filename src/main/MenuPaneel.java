@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
-import main.Main;
 
 public class MenuPaneel extends JPanel implements Andmed{
     String nimi = "";
@@ -21,13 +20,27 @@ public class MenuPaneel extends JPanel implements Andmed{
 
     }
     public void tekst(){
-        f.setLayout(new FlowLayout());
+        f.setLayout(null);
 
+        f.getContentPane().setBackground(Color.BLACK);
+        f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel kasutajaLabel = new JLabel("Mängija:");
         JTextField kasutaja = new JTextField(25);
         JButton nupp = new JButton("Mängi!");
+        JLabel pealkiri = new JLabel("Totaalne mäng");
+        pealkiri.setForeground(Color.WHITE);
+        kasutajaLabel.setForeground(Color.WHITE);
+        pealkiri.setForeground(Color.WHITE);
 
+        pealkiri.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 48));
+        pealkiri.setBounds(ekraaniLaius/2-162, 100, 315, 100);
+
+        kasutajaLabel.setBounds(ekraaniLaius/2-120, 250, 60, 30);
+        kasutaja.setBounds(ekraaniLaius/2-60, 250, 100, 30);
+        nupp.setBounds(ekraaniLaius/2+40, 250, 80,30);
+
+        f.add(pealkiri);
         f.add(kasutajaLabel);
         f.add(kasutaja);
         f.add(nupp);
