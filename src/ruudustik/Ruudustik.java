@@ -4,18 +4,13 @@ import main.Andmed;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import main.GamePanel;
-import main.Main;
-import main.MenuPaneel;
+
 
 public class Ruudustik extends JFrame implements Andmed {
     Image[] ruut;
@@ -24,7 +19,6 @@ public class Ruudustik extends JFrame implements Andmed {
     public Ruudustik() {
         ruut = new Image[10];
         getPilt();
-
     }
     public void getPilt() {
 
@@ -37,7 +31,6 @@ public class Ruudustik extends JFrame implements Andmed {
             e.printStackTrace();
         }
     }
-
     public void maastik(Graphics2D graafika2D) {
         int x = 0;
         int y = 0;
@@ -59,5 +52,4 @@ public class Ruudustik extends JFrame implements Andmed {
 
         }
     }
-
 }
