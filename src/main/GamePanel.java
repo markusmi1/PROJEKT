@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         this.setLayout(null);
         this.ruudustik = new Ruudustik();
         this.klaviatuurSisend = new KlaviatuurSisend();
-        this.mehike = new Peategelane("/tegelased/tegelane.png",100,100);
+        this.mehike = new Peategelane(100,100);
         this.kirst = new AardeKirst();
         //this.proov1 = new KokkupõrkeKast(mehike.x+12,mehike.y+38,10,10,Color.WHITE);  //kokkupõrke proovimiseks, EI tööta
         //this.proov2 = new KokkupõrkeKast(kirst.xKoord,kirst.yKoord,kirst.pildiSuurus,kirst.pildiSuurus,Color.BLUE);
@@ -63,11 +63,13 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         else if (KlaviatuurSisend.vasak) {
             mehike.x -= 3;
             mehike.hitBox.x -= 3;
+            mehike.prinditavVaade = mehike.tegelasepiltVaadeVasakule;
             //proov1.x -= 3;
         }
         else if (KlaviatuurSisend.parem) {
             mehike.x += 3;
             mehike.hitBox.x += 3;
+            mehike.prinditavVaade = mehike.tegelasepiltVaadeParemale;
             //proov1.x += 3;
         }
     }
@@ -115,8 +117,8 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
         ruudustik.maastik(graafika2D);
         kirst.joonistaKirst(graafika2D);
         mehike.prindiKarakter(graafika2D,mehike.x,mehike.y);//prindib mehikese
-        mehike.hitBox.joonistaKast(graafika2D);
-        kirst.hitBox.joonistaKast(graafika2D);
+        //mehike.hitBox.joonistaKast(graafika2D);
+        //kirst.hitBox.joonistaKast(graafika2D);
         //proov1.joonistaKast(graafika2D);  //ajutine
         //proov2.joonistaKast(graafika2D);
 
