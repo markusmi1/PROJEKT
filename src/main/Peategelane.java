@@ -14,7 +14,8 @@ public class Peategelane implements Andmed {
 
     public Peategelane(String pildiTee) throws IOException {
         this.pildiTee = pildiTee;      //täielik tee peab olema igaks juhuks hetkel, otse kasutast otsimisel ei leidnud algul
-        this.tegelasePilt = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(pildiTee)));     //annab karkaterile pildi, alamklassiks on ImageIcon, vajadusel saab moondada
+        this.tegelasePilt = new ImageIcon(getClass().getResource(pildiTee)).getImage();
+        //this.tegelasePilt = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(pildiTee)));     //annab karkaterile pildi, alamklassiks on ImageIcon, vajadusel saab moondada
     }
 
 
@@ -24,7 +25,7 @@ public class Peategelane implements Andmed {
 
     public void prindiKarakter(Graphics2D graafika, int xKoord,int yKoord){
 
-        graafika.drawImage(tegelasePilt,xKoord,yKoord,48,48,null);
+        graafika.drawImage(tegelasePilt,xKoord,yKoord,suurus,suurus,null);
     }
 
     public void setPeategelanePilt(String failpath){

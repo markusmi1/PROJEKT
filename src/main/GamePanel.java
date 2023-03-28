@@ -1,40 +1,48 @@
 package main;
 
+import MaailmaObjektid.AardeKirst;
 import ruudustik.Ruudustik;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable,Andmed{
 
-    //ajutine
-    public int suurus = Andmed.suurus;
+
 
     // karakteri alguspunkt
-    int xKoord = 100;
-    int yKoord = 100;
-    Thread gameThread;
-    KlaviatuurSisend klaviatuurSisend = new KlaviatuurSisend();
-    Ruudustik ruudustik = new Ruudustik();
-    Peategelane mehike = new Peategelane("/tegelased/tegelane.png");
+    int xKoord = 0;
+    int yKoord = 0;
 
-    public GamePanel() throws IOException {             //paneeli andmed
+    int FPS;
+    Thread PeamiseMänguLõim;
+    KlaviatuurSisend klaviatuurSisend;
+    Ruudustik ruudustik;
+    Peategelane mehike;
+    AardeKirst kirst;
+
+    public GamePanel() throws IOException { //paneeli andmed ja vajalike objektide tegemine
+        this.FPS= 60;
         this.setPreferredSize(new Dimension(Andmed.ekraaniLaius,Andmed.ekraaniKõrgus));
         this.setBackground(Color.BLACK);
         this.setLayout(null);
+        this.ruudustik = new Ruudustik();
+        this.klaviatuurSisend = new KlaviatuurSisend();
+        this.mehike = new Peategelane("/tegelased/tegelane.png");
+        this.kirst = new AardeKirst();
         this.addKeyListener(klaviatuurSisend);
         this.setFocusable(true);
         this.setDoubleBuffered(true);
     }
 
-    public void alustaGameThread(){        //alustab lõime, alustab meetodi run ja meetodi paint
-        gameThread = new Thread(this);
-        gameThread.start();
+    public void alustaGameThread(){        //alustab lõime,määrab lõimele kus tegutseda, alustab meetodi run
+        PeamiseMänguLõim = new Thread(this);
+        PeamiseMänguLõim.start();
     }
 
     public void lõpetaGameThread(){
-        gameThread.interrupt();
+        PeamiseMänguLõim.interrupt();
     }
 
     public void uuendaPositsiooni(){         //uuendab karakteri positisooni levelil, muudab pilti
@@ -46,18 +54,17 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     @Override
-    public void run() {         //PEAMINE MÄNGU TSÜKKEL
-        //TODO vaja lisada peamine tsükkel + teha meetod mis konstantselt uuendaks graafikat
+    public void run() {         //PEAMINE MÄNGU TSÜKKEL: uuendab alati graafilist pilti ekraanil
         //TODO hetkel on graafika viidud Peategelase klassi ehk äkki siin sõltuvalt keylistnerist muuta karakteri suuna pilt
 
-        double aja_vahemik = 1000000000/60;
+        double aja_vahemik = 1000000000/FPS;
         double UusAegEnneJoonistamist = System.nanoTime() + aja_vahemik;
 
-        while (gameThread != null){
+        while (PeamiseMänguLõim != null){
             //System.out.println("käib");
 
             uuendaPositsiooni();
-            repaint();
+            repaint();  //kutsub uuesti esile paint meetodi, uuendab graafikat
 
             //System.out.println(Thread.currentThread().getName());
             try {
@@ -78,10 +85,12 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
 
         ruudustik.maastik(graafika2D);
-
-        //TODO vaja viia kas run meetodisse või siia lisada signatuurile muutuvad koordinaadi parameetrid
-        mehike.prindiKarakter(graafika2D,xKoord,yKoord); //prindib mehikese
+        //Shape ruut = new Rectangle(0,0,suurus,suurus);
+        mehike.prindiKarakter(graafika2D,xKoord,yKoord);//prindib mehikese
+        graafika2D.drawRect(xKoord,yKoord,suurus,suurus);
         graafika2D.dispose();
+        kirst.joonistaKirst(graafika2D);
+
     }
 
 
