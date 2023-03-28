@@ -49,7 +49,6 @@ public class Ruudustik extends JFrame implements Andmed {
         }*/
     }
     public void maastik(Graphics2D graafika2D) {
-        //File map = new File("map.txt");
         int x = 0;
         int y = 0;
         try {

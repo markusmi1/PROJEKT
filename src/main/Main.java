@@ -24,8 +24,7 @@ public class Main extends JPanel {
 
         aken.pack();
         aken.setVisible(true);
-
-        level.alustaGameThread();
+        level.alusta();
     }
 }
 
