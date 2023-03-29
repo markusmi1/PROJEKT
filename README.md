@@ -25,6 +25,7 @@ viimaks lisasime kasutajalt nime küsimise ja kasti genereerimise
 
 Panus:
 Robin - Main, MänguPaneel, PeaTegelane, Andmed, KlaviatuuriSisend, Kast, lisaks ka KokkuPõrkeKast ja Ese klasside algus, mis oleks edasiarendusel kasulikud. Ajakulu - 20h
+
 Markus - Main, MänguPaneel, MenuPaneel, Andmed, Ruudustik. Ajakulu - 18h kindlasti
 
 Mured ja rahulolud:
