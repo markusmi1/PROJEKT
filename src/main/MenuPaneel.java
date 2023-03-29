@@ -13,6 +13,7 @@ public class MenuPaneel extends JPanel implements Andmed{
     public MenuPaneel() throws IOException { //konstruktor
         f.setPreferredSize(new Dimension(Andmed.ekraaniLaius,Andmed.ekraaniKõrgus));
         f.getContentPane().setBackground(Color.WHITE);
+        f.setTitle("OOP mänguprojekt");
         f.setFocusable(true);
         tekst();
     }
