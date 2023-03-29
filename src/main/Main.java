@@ -11,19 +11,15 @@ public class Main extends JPanel {
 
         JFrame aken = new JFrame();//peamine aken
         aken.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        aken.setLocationRelativeTo(null);
         aken.setResizable(false);
         aken.setTitle("OOP mänguprojekt");
 
         mänguPaneel level = new mänguPaneel(); //uus mängu paneel
         aken.add(level);  //lisab mängu paneeli aknasse
 
-
         aken.pack();
         aken.setVisible(true);
         level.alusta();
-
-
     }
 }
 

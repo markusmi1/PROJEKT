@@ -9,7 +9,6 @@ public class KlaviatuurSisend implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
     @Override
     public void keyPressed(KeyEvent e) {    //boolean väärtuseid kontrollitakse mänguPaneel.uuendaPositisooni, on kiirem
         int kood = e.getKeyCode();
