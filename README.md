@@ -1,4 +1,4 @@
-# projekt: Swing lagne retro-stiilis mäng
+# projekt: Swing retro-stiilis mäng
 Markus Michelis, Robin Mürk
 
 Projekti eesmärgiks oli teha algeline 2D mäng kasutades swing graafilist liidest. 
