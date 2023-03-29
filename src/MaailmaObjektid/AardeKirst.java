@@ -26,12 +26,11 @@ public class AardeKirst  implements Andmed {
         this.yKoord = (int) (Math.random()* 101 + 240);
         this.kasAvatud = false;
         this.hitBox = new KokkupõrkeKast(this.xKoord,this.yKoord,pildiSuurus,pildiSuurus,Color.BLUE);   //kirstu hitbox
-        System.out.println(this.xKoord);
-        System.out.println(this.yKoord);
+        //System.out.println(this.xKoord);
+        //System.out.println(this.yKoord);
     }
 
     public void joonistaKirst(Graphics2D g) {
         g.drawImage(pilt, xKoord, yKoord, pildiSuurus, pildiSuurus, null);
-        //else if (kasAvatud) g.drawImage(pilt,xKoord,yKoord, Andmed.suurus,Andmed.suurus,null);  //selleks ajaks pilt muudetud, kasAvatud muutub siis kui avatakse kirst
     }
 }

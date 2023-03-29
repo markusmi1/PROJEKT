@@ -11,13 +11,13 @@ public class KlaviatuurSisend implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {    //boolean väärtuseid kontrollitakse mänguPaneel.uuendaPositisooni, on kiirem
         int kood = e.getKeyCode();
         if (kood == KeyEvent.VK_W) üles = true;
         if (kood == KeyEvent.VK_S) alla = true;
         if (kood == KeyEvent.VK_A) vasak = true;
         if (kood == KeyEvent.VK_D) parem = true;
-        System.out.println("nuppu vajutati");   //kontroll
+        //System.out.println("nuppu vajutati");   //kontroll
         //System.out.println(Thread.currentThread().getName());
     }
 

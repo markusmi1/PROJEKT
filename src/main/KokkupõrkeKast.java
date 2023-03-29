@@ -3,15 +3,17 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ * kokkupõrke loogika on kogu projektis pooleli
+ */
 public class KokkupõrkeKast extends Rectangle {
-//todo tuleb kast mis on alati karakteri kohal või objekti kohal, mõeldud kokkupõrgete registreerimiseks
     //todo vaja välja mõelda kuidas saada levelile efektiivselt samamoodi peale, äkki leveli koostamise ajal (ruudustik.java)
 
     int x;
     int y;
     int laius;
     int kõrgus;
-    //ajutine värv kontrolliks
     Color värv;
 
 

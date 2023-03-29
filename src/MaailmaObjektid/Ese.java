@@ -2,6 +2,9 @@ package MaailmaObjektid;
 
 import java.util.ArrayList;
 
+
+
+//ei ole kasutuses, oleksid olnud mängu sisesed kasutatavad objektid (mõõk, eliksiirid jne)
 public class Ese {
 
     String tüüp;
