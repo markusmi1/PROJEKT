@@ -8,8 +8,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable,Andmed{
-
-
     int FPS;
     Thread PeamiseMänguLõim;
     boolean kasTöötab;
@@ -110,10 +108,9 @@ public class GamePanel extends JPanel implements Runnable,Andmed{
     }
 
     public void paint(Graphics g){    //printimine run käigu ajal(sisse ehitatud funktsioon, kutsutakse vaikselt)
-
         Graphics2D graafika2D = (Graphics2D) g;  //vajalik teha Graphics2D objektiks et oleks rohkem funktsionaalsust
 
-        ruudustik.maastik(graafika2D);
+        ruudustik.joonistaMaastik(graafika2D);
         kirst.joonistaKirst(graafika2D);
         mehike.prindiKarakter(graafika2D,mehike.x,mehike.y);//prindib mehikese
         //mehike.hitBox.joonistaKast(graafika2D);
